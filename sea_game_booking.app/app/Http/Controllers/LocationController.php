@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class LocationController extends Controller
 {
@@ -13,6 +14,8 @@ class LocationController extends Controller
     public function index()
     {
         //
+        $location=Location::all();
+        return response()->json(['message' => 'Success', 'data' => $location],200);
     }
 
     /**
@@ -21,7 +24,20 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:locations',
+            'number_seat'=>'required',
+            'address' => 'required|unique:locations',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['message' => $validator->errors()->first()], 422);
+        } else {
+            $location = Location::create($validator->validated());
+            return response()->json(['message' => 'Successfully created', 'data' => $location], 200);
+        }
     }
+    
 
     /**
      * Display the specified resource.

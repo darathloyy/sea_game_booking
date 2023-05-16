@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('match');
             $table->time('time');
-            $table->string('desciption');
+            $table->unsignedBigInteger('event_id');
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            $table->string('description');
             $table->timestamps();
         });
     }

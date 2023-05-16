@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sports', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('gender');
+            $table->string('gender');
             $table->timestamps();
         });
     }

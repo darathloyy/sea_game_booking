@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->integer('number_ticket');
-            $table->unsignedBigInteger('competition_id');
-            $table->foreign('competition_id')->references('id')->on('competitions')->onDelete('cascade');
             $table->unsignedBigInteger('sport_id');
             $table->foreign('sport_id')->references('id')->on('sports')->onDelete('cascade');
             $table->unsignedBigInteger('location_id');

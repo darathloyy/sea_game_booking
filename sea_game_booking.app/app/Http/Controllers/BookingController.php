@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
 {
@@ -21,6 +22,16 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = Validator::make($request->all(), [
+            'event_id' =>'required|unique:bookings',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['message' => $validator->errors()->first()], 422);
+        } else {
+            $booking = Booking::create($validator->validated());
+            return response()->json(['message' => 'Successfully created', 'data' => $booking], 200);
+        }
     }
 
     /**
@@ -29,6 +40,7 @@ class BookingController extends Controller
     public function show(Booking $booking)
     {
         //
+        
     }
 
     /**
