@@ -27,7 +27,7 @@ class EventController extends Controller
     {
         //
         $validator = Validator::make($request->all(), [
-            'date' => 'required',
+            'date' => 'required|unique:events',
             'number_ticket' => 'required',
             'sport_id' => 'required',
             'location_id' => 'required',

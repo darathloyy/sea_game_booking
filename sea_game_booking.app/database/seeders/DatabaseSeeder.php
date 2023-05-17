@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Sport;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +20,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $this->call(SportSeeder::class);
+        $this->call(LocationSeeder::class);
+        $this->call(EventSeeder::class);
+        $this->call(CompetitionSeeder::class);
+        $this->call(BookingSeeder::class);
     }
 }

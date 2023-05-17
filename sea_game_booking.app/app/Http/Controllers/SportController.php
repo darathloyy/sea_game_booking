@@ -55,8 +55,8 @@ class SportController extends Controller
         //
         $sport=Sport::find($id);
         $validator=Validator::make($request->all(),[
-            'name'=>'required|unique:sports',
-            'gender'=>'male|female',
+            'name'=>'required',
+            'gender'=>'required',
         ]);
         if($validator->fails()){
             return response()->json(['message'=>$validator->errors()],422);

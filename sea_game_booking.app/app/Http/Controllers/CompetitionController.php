@@ -15,8 +15,8 @@ class CompetitionController extends Controller
     public function index()
     {
         //
-        $competitions= Competition::all();
-        return response()->json(['message' => 'successfully','data' => $competitions],200);
+        $competitions = Competition::all();
+        return response()->json(['message' => 'successfully', 'data' => $competitions], 200);
     }
 
     /**
@@ -26,12 +26,12 @@ class CompetitionController extends Controller
     {
         //
         $validator = Validator::make($request->all(), [
-            'match'=>'required|unique:competitions',
+            'match' => 'required|unique:competitions',
             'time' => 'required|date_format:H:i:s',
             'event_id' => 'required',
-            'description'=>'required',
+            'description' => 'required',
         ]);
-    
+
         if ($validator->fails()) {
             return response()->json(['message' => $validator->errors()->first()], 422);
         } else {
@@ -47,7 +47,7 @@ class CompetitionController extends Controller
     {
         //
         $competition = Competition::where('event_id', $id)->get();
-        return response()->json(['message' => 'success', 'data' => $competition],200);
+        return response()->json(['message' => 'success', 'data' => $competition], 200);
     }
 
     /**
@@ -56,18 +56,18 @@ class CompetitionController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $competition=Competition::find($id);
-        $validator=Validator::make($request->all(),[
-            'match'=>'required|unique:competitions',
-            'time'=>'required|unique:competitions',
-            'event_id'=>'required',
-            'description'=>'required',
+        $competition = Competition::find($id);
+        $validator = Validator::make($request->all(), [
+            'match' => 'required|unique:competitions',
+            'time' => 'required|unique:competitions',
+            'event_id' => 'required',
+            'description' => 'required',
         ]);
-        if($validator->fails()){
-            return response()->json(['message'=>$validator->errors()],422);
-        }else{
+        if ($validator->fails()) {
+            return response()->json(['message' => $validator->errors()], 422);
+        } else {
             $competition->update($validator->validated());
-            return response()->json(['message'=>'successfully','data'=>$competition],200);
+            return response()->json(['message' => 'successfully', 'data' => $competition], 200);
         }
     }
 
@@ -77,15 +77,8 @@ class CompetitionController extends Controller
     public function destroy($id)
     {
         //
-        $competition=Competition::find($id);
+        $competition = Competition::find($id);
         $competition->delete();
-        return response()->json(['message'=>'successfully'],200);
+        return response()->json(['message' => 'successfully'], 200);
     }
-    // public function getllCompetitionEvent($id)
-    // {
-    //     //
-    //     $competition=Event::find($id)->competition;
-    //     // return Event::find($id)->competition;
-    //     return response()->json(['message'=>'request successfully','data'=>$competition],200);
-    // }
 }
