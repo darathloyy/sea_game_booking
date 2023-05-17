@@ -13,7 +13,40 @@
 					"name": "create_event",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/event?date=2023-06-12&number_ticket=60000&sport_id=1&location_id=2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"event"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2023-06-12"
+								},
+								{
+									"key": "number_ticket",
+									"value": "60000"
+								},
+								{
+									"key": "sport_id",
+									"value": "1"
+								},
+								{
+									"key": "location_id",
+									"value": "2"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -29,7 +62,23 @@
 					"name": "search_event",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/search/f",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"search",
+								"f"
+							]
+						}
 					},
 					"response": []
 				},
@@ -37,7 +86,23 @@
 					"name": "detail_event",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/getDetail/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getDetail",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -45,7 +110,22 @@
 					"name": "list_events",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/event",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"event"
+							]
+						}
 					},
 					"response": []
 				},
@@ -56,7 +136,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n    \"date\": \"2023-06-01\",\r\n    \"number_ticket\": 60000,\r\n    \"sport_id\": 1,\r\n    \"location_id\": 2\r\n}",
+							"raw": "{\r\n\r\n    \"date\": \"2023-06-02\",\r\n    \"number_ticket\": 60000,\r\n    \"sport_id\": 1,\r\n    \"location_id\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -91,7 +171,22 @@
 					"name": "get_all_sports",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sport",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sport"
+							]
+						}
 					},
 					"response": []
 				},
@@ -99,7 +194,32 @@
 					"name": "create_sport",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sport?name=Basketball&gender=male",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sport"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Basketball"
+								},
+								{
+									"key": "gender",
+									"value": "male"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -107,7 +227,23 @@
 					"name": "show_sport_by_id",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sport/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sport",
+								"4"
+							]
+						}
 					},
 					"response": []
 				},
@@ -115,15 +251,56 @@
 					"name": "update_sport",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"name\": \"Basketball\",\r\n    \"gender\": \"female\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sport/6",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sport",
+								"6"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "delete_sport",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/event/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"event",
+								"3"
+							]
+						}
 					},
 					"response": []
 				}
@@ -136,6 +313,35 @@
 					"name": "buy_ticket",
 					"request": {
 						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/booking?event_id=4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"booking"
+							],
+							"query": [
+								{
+									"key": "event_id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_booking",
+					"request": {
+						"method": "GET",
 						"header": [],
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/booking",
@@ -152,14 +358,6 @@
 								"booking"
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_booking",
-					"request": {
-						"method": "GET",
-						"header": []
 					},
 					"response": []
 				}
