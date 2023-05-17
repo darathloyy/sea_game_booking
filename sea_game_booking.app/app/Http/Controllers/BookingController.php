@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,7 +15,7 @@ class BookingController extends Controller
     public function index()
     {
         //
-        $booking=Booking::all();
+        $booking = Booking::all();
         return response()->json(['message' => 'Successfully', 'data' => $booking], 200);
     }
 
@@ -23,16 +24,22 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $validator = Validator::make($request->all(), [
-            'event_id' =>'required|unique:bookings',
+            'event_id' => "required"
         ]);
-    
         if ($validator->fails()) {
-            return response()->json(['message' => $validator->errors()->first()], 422);
+            return $validator->errors();
+        }
+        $event = Event::find(request('event_id'));
+        if ($event->number_ticket <= 0) {
+            return response()->json(['message' => 'Ticket is sold out'], 200);
         } else {
-            $booking = Booking::create($validator->validated());
-            return response()->json(['message' => 'Successfully created', 'data' => $booking], 200);
+
+            $event->update([
+                'number_ticket' => $event['number_ticket'] - 1
+            ]);
+            $booking = Booking::create($validator->validate());
+            return response()->json(['message' => 'Booking successfully!', 'data' => $booking], 200);
         }
     }
 
@@ -42,7 +49,7 @@ class BookingController extends Controller
     public function show(Booking $booking)
     {
         //
-        
+
     }
 
     /**

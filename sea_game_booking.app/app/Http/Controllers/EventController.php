@@ -57,7 +57,7 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $event=Event::find($id);
+        $event = Event::find($id);
         $validator = Validator::make($request->all(), [
             'date' => 'required|unique:events',
             'number_ticket' => 'required',
@@ -79,16 +79,14 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
-        $event=Event::find($id);
+        $event = Event::find($id);
         $event->delete();
-        return response()->json(['message' =>'successfully deleted'],200);
+        return response()->json(['message' => 'successfully deleted'], 200);
     }
 
     public function getDitail($id)
     {
-        //
-        // $event = Event::select('date', 'location_id', 'number_ticket', 'sport_id')->where('id', $id)->get();
-        // $competition = Competition::select('match', 'time', 'description')->where('event_id', $id)->get();
+    
 
         $event = Event::leftJoin('competitions', 'events.id', '=', 'competitions.event_id')
             ->leftJoin('sports', 'events.sport_id', '=', 'sports.id')
@@ -107,11 +105,11 @@ class EventController extends Controller
         return response()->json(['message' => 'success', 'data' => $event], 200);
     }
 
-    public function search ($sport_name) 
+    public function search($sport_name)
     {
         $event = Event::leftJoin('competitions', 'events.id', '=', 'competitions.event_id')
-        ->leftJoin('sports', 'events.sport_id', '=', 'sports.id')
-        ->where('sports.name','like','%'.$sport_name.'%')->get();
-        return response()->json(['message'=>'successfully','data'=>$event],200);
+            ->leftJoin('sports', 'events.sport_id', '=', 'sports.id')
+            ->where('sports.name', 'like', '%' . $sport_name . '%')->get();
+        return response()->json(['message' => 'successfully', 'data' => $event], 200);
     }
 }
