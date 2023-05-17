@@ -69,7 +69,7 @@ class EventController extends Controller
             return response()->json(['message' => $validator->errors()->first()], 422);
         } else {
             $event->update($validator->validated());
-            return response()->json(['message' => 'Successfully created', 'data' => $event], 200);
+            return response()->json(['message' => 'Successfully update', 'data' => $event], 200);
         }
     }
 
